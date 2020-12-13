@@ -2,18 +2,32 @@ package com.example.ar_tour;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
+
 public class HomeFragment extends Fragment {
+    RecyclerView recyclerView;
+    ArrayList<String> Number;
+    RecyclerView.LayoutManager RecyclerViewLayoutManager;
+    CustomAdapter RecyclerViewHorizontalAdapter;
+    LinearLayoutManager HorizontalLayout ;
+    View ChildView ;
+    int RecyclerViewItemPosition ;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,14 +42,7 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -53,6 +60,86 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+
+    // function to add items in RecyclerView.
+    public void AddItemsToRecyclerViewArrayList(){
+
+        Number = new ArrayList<>();
+        Number.add("Trip Offer 1");
+        Number.add("Trip Offer 2");
+        Number.add("Trip Offer 3");
+        Number.add("Trip Offer 4");
+        Number.add("Trip Offer 5");
+        Number.add("Trip Offer 6");
+        Number.add("Trip Offer 7");
+        Number.add("Trip Offer 8");
+        Number.add("Trip Offer 9");
+        Number.add("Trip Offer 10");
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = (getActivity()).findViewById(R.id.Recylerview);
+
+        RecyclerViewLayoutManager = new LinearLayoutManager(getContext());
+
+        recyclerView.setLayoutManager(RecyclerViewLayoutManager);
+
+        // Adding items to RecyclerView.
+        AddItemsToRecyclerViewArrayList();
+
+        RecyclerViewHorizontalAdapter = new CustomAdapter(Number);
+
+        HorizontalLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(HorizontalLayout);
+
+        recyclerView.setAdapter(RecyclerViewHorizontalAdapter);
+
+
+        // Adding on item click listener to RecyclerView.
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            GestureDetector gestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
+
+                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                    return true;
+                }
+
+            });
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
+
+                ChildView = Recyclerview.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+                if(ChildView != null && gestureDetector.onTouchEvent(motionEvent)) {
+
+                    //Getting clicked value.
+                    RecyclerViewItemPosition = Recyclerview.getChildAdapterPosition(ChildView);
+
+                    // Showing clicked item value on screen using toast message.
+                    Toast.makeText(getContext(), Number.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
+
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
     @Override
@@ -60,5 +147,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home2, container, false);
+
+
     }
 }
