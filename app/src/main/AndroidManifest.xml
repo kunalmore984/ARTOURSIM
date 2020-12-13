@@ -4,6 +4,32 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <uses-feature android:glEsVersion="0x00030000" />
+    <uses-feature
+        android:name="android.hardware.vulkan.version"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen.multitouch.distinct"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,20 +37,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExploreActivity"></activity>
-        <!--
-        <activity
-            android:name=".maps"
-            android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".BottomNavigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+ <!--       <activity
+            android:name=".ui.home.BottomNavigationBar"
+            android:label="@string/title_activity_bottom_navigation_bar">
+
+        </activity>-->
+        <activity android:name=".Home">
+
+        </activity>
+        <activity android:name=".ExploreActivity" />
+        <!--
+        <activity
+            android:name=".maps"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        -->
+        <activity android:name=".MainActivity" />
+        <activity android:name="com.unity3d.player.UnityPlayerActivity" />
+
+        <meta-data
+            android:name="unity.splash-mode"
+            android:value="0" />
+        <meta-data
+            android:name="unity.splash-enable"
+            android:value="True" />
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+        <meta-data
+            android:name="unity.build-id"
+            android:value="8f687b98-ce56-4f03-a6f6-4b66b316891a" />
     </application>
 
 </manifest>
