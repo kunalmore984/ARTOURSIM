@@ -37,6 +37,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".setting"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".Register">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".BottomNavigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,14 +53,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
- <!--       <activity
+        <!--
+       <activity
             android:name=".ui.home.BottomNavigationBar"
             android:label="@string/title_activity_bottom_navigation_bar">
 
-        </activity>-->
-        <activity android:name=".Home">
-
         </activity>
+        -->
+        <activity android:name=".Home" />
         <activity android:name=".ExploreActivity" />
         <!--
         <activity
@@ -71,6 +80,9 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="unity.build-id"
             android:value="8f687b98-ce56-4f03-a6f6-4b66b316891a" />

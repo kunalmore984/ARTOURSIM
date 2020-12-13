@@ -9,9 +9,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../../../../New folder/Android Libs" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="F:/MainVuforia/Android Libs/unityLibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

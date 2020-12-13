@@ -1,4 +1,4 @@
 include ':app'
 rootProject.name = "AR_TOUR"
 include ':unityLibrary'
-project(':unityLibrary').projectDir=new File('F:\\MainVuforia\\Android Libs\\unityLibrary')
+project(':unityLibrary').projectDir=new File('C:\\Users\\king\\Desktop\\New folder\\Android Libs')
