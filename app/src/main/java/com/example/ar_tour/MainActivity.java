@@ -35,6 +35,7 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher;
 import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute;
+import com.unity3d.player.UnityPlayerActivity;
 
 import java.util.List;
 
@@ -73,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View view) {
                 Intent arintent =new Intent(MainActivity.this,ExploreActivity.class);
                 startActivity(arintent);
+            }
+        });
+        Button expl =(Button) findViewById(R.id.explore);
+        expl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent UnityActivity =new Intent(MainActivity.this, UnityPlayerActivity.class);
+                startActivity(UnityActivity);
             }
         });
         mapView = findViewById(R.id.mapView);
