@@ -1,19 +1,36 @@
 package com.example.ar_tour;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link explore#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.api.directions.v5.models.DirectionsRoute;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
+import com.unity3d.player.UnityPlayerActivity;
+
 public class explore extends Fragment {
+
+    private MapView mapView;
+    private MapboxMap mapboxmap;
+    private PermissionsManager permissionsManager;
+    private LocationComponent locationComponent;
+    private DirectionsRoute directionsRoute;
+    private static final String TAG = "DirectionsActivity";
+    private Button startbutton;
+    private NavigationMapRoute navigationMapRoute;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,14 +45,7 @@ public class explore extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment explore.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static explore newInstance(String param1, String param2) {
         explore fragment = new explore();
@@ -53,6 +63,29 @@ public class explore extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Mapbox.getInstance(getContext(), getString(R.string.mapbox_access_token));
+        Button expl =(getActivity()).findViewById(R.id.explore);
+        expl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent UnityActivity =new Intent(getContext(), UnityPlayerActivity.class);
+                startActivity(UnityActivity);
+            }
+        });
+        Button maps =getActivity().findViewById(R.id.maps);
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Maps =new Intent(getContext(),MainActivity.class);
+                startActivity(Maps);
+            }
+        });
+
     }
 
     @Override
