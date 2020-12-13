@@ -2,18 +2,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-
+        android:id="@+id/home"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="home"/>
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
+        android:id="@+id/trips"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_card_travel_24"
+        android:title="trips"/>
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/explore"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_explore_24"
+        android:title="explore"/>
+<!--    <item
+        android:id="@+id/my_trips"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_beenhere_24"
+        android:title="my trips"/>-->
+    <item
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:visible="true"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Settings"/>
 
 </menu>
