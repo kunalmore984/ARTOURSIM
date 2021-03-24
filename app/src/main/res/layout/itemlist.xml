@@ -4,23 +4,30 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cardview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         card_view:contentPadding="7dp"
         card_view:cardCornerRadius="7dp"
         card_view:cardElevation="7dp"
         card_view:cardBackgroundColor="#FF9800"
         android:layout_margin="1dp">
 
+    <ImageView
+        android:id="@+id/imageoffer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_water_damage_24"
+        />
 
         <TextView
             android:id="@+id/textview1"
             android:layout_gravity="center"
             android:gravity="center"
+            android:text="Offers"
             android:textSize="20sp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textStyle="bold"
             android:textColor="#fff"/>
     </androidx.cardview.widget.CardView>

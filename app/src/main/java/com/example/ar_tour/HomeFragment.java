@@ -1,5 +1,6 @@
 package com.example.ar_tour;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -84,30 +86,34 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //settings fragment....
+        ImageButton settings=(view).findViewById(R.id.settings_buttons);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent settingsintent =new Intent(getActivity(),setting.class);
+                startActivity(settingsintent);
+            }
+        });
+        //tabbed view for trips offer......
         recyclerView = (getActivity()).findViewById(R.id.Recylerview);
 
         RecyclerViewLayoutManager = new LinearLayoutManager(getContext());
-
         recyclerView.setLayoutManager(RecyclerViewLayoutManager);
 
         // Adding items to RecyclerView.
         AddItemsToRecyclerViewArrayList();
-
         RecyclerViewHorizontalAdapter = new CustomAdapter(Number);
 
         HorizontalLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(HorizontalLayout);
 
         recyclerView.setAdapter(RecyclerViewHorizontalAdapter);
-
-
         // Adding on item click listener to RecyclerView.
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
             GestureDetector gestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
 
                 @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
-
                     return true;
                 }
 

@@ -1,61 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ar_tour.MainActivity"
-    android:orientation="vertical">
+    tools:context="com.example.ar_tour.MainActivity">
 
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
+    <com.mapbox.vision.ar.view.gl.VisionArView
+        android:id="@+id/mapbox_ar_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        mapbox:mapbox_cameraTargetLat="38.9098"
-        mapbox:mapbox_cameraTargetLng="-77.0295"
-        mapbox:mapbox_cameraZoom="12">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            >
+        android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/startButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|left"
-                android:layout_marginBottom="12dp"
-                android:background="@color/colorPrimary"
-                android:enabled="false"
-                android:text="@string/start_navigation"
-                android:textColor="@color/design_default_color_background" />
-
-            <Button
-                android:id="@+id/Armode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="@dimen/report_feedback_padding_16"
-                android:layout_marginLeft="@dimen/report_feedback_padding_16"
-                android:paddingStart="@dimen/report_feedback_padding_16"
-                android:paddingLeft="@dimen/report_feedback_padding_16"
-                android:text="@string/ar_mode" />
-
-            <Button
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end
-"
-                android:text="@string/explore"
-                android:id="@+id/explore"
-                android:layout_marginStart="10dp" />
-
-        </LinearLayout>
-
-    </com.mapbox.mapboxsdk.maps.MapView>
-
-</LinearLayout>
+    </com.mapbox.vision.ar.view.gl.VisionArView>
+</FrameLayout>

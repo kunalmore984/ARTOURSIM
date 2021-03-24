@@ -2,8 +2,10 @@ package com.example.ar_tour;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,8 @@ public class setting extends AppCompatActivity {
     ImageView profileImage;
     StorageReference storageReference;
 
+
+    boolean Islogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -159,7 +163,7 @@ public class setting extends AppCompatActivity {
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
-        startActivity(new Intent(getApplicationContext(), Login.class));
+        startActivity(new Intent(getApplicationContext(), Register.class));
         finish();
     }
 }

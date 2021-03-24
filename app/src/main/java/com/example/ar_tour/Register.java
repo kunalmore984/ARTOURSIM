@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,19 +42,21 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        FirebaseApp.initializeApp(Register.this);
+        // initialising all views through id defined above
         mFullName   = findViewById(R.id.fullName);
         mEmail      = findViewById(R.id.Email);
         mPassword   = findViewById(R.id.password);
         mPhone      = findViewById(R.id.phone);
         mRegisterBtn= findViewById(R.id.loginBtn);
         mLoginBtn   = findViewById(R.id.createText);
-
+        //Taking FireBaseAuth Instance
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
         if (fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),BottomNavigation.class));
             finish();
         }
 
@@ -117,7 +120,7 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: user progile is created " + userID);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),setting.class));
+                            startActivity(new Intent(getApplicationContext(),BottomNavigation.class));
                         }
                         else{
                             Toast.makeText(Register.this, "Error occured" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

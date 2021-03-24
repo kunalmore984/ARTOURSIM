@@ -6,12 +6,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.tabs.TabLayout;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.mapboxsdk.Mapbox;
@@ -22,15 +26,10 @@ import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
 import com.unity3d.player.UnityPlayerActivity;
 
 public class explore extends Fragment {
-
-    private MapView mapView;
-    private MapboxMap mapboxmap;
-    private PermissionsManager permissionsManager;
-    private LocationComponent locationComponent;
-    private DirectionsRoute directionsRoute;
-    private static final String TAG = "DirectionsActivity";
-    private Button startbutton;
-    private NavigationMapRoute navigationMapRoute;
+    //varaibles.....
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    TabAdapter tabAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,29 +67,21 @@ public class explore extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Mapbox.getInstance(getContext(), getString(R.string.mapbox_access_token));
-        Button expl =(getActivity()).findViewById(R.id.explore);
-        expl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent UnityActivity =new Intent(getContext(), UnityPlayerActivity.class);
-                startActivity(UnityActivity);
-            }
-        });
-        Button maps =getActivity().findViewById(R.id.maps);
-        maps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Maps =new Intent(getContext(),MainActivity.class);
-                startActivity(Maps);
-            }
-        });
+        tabLayout =view.findViewById(R.id.explore_tab);
+        viewPager =view.findViewById(R.id.explore_viewpager);
+        tabAdapter =new TabAdapter(getChildFragmentManager(),FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        tabAdapter.addfragments(new MapsFragment(),"Maps");
+        tabAdapter.addfragments(new ExploreFragmentforAR(),"Explore");
+        viewPager.setAdapter(tabAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explore, container, false);
     }

@@ -1,4 +1,16 @@
 package com.example.ar_tour;
 
-public class PoiHelper {
+import java.util.ArrayList;
+
+public class PoiHelper{
+    public String mPoiplace;
+
+    public PoiHelper(String poiplace){
+        mPoiplace =poiplace;
+
+    }
+
+    public String getPlace(){
+        return mPoiplace;
+    }
 }

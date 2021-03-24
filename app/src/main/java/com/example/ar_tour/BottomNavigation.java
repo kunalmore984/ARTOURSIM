@@ -53,6 +53,8 @@ public class BottomNavigation extends AppCompatActivity implements BottomNavigat
                 break;
 
             case R.id.settings:
+                /*Intent UnityActivity =new Intent(BottomNavigation.this, setting.class);
+                startActivity(UnityActivity);*/
                 fragment = new settings();
                 break;
 

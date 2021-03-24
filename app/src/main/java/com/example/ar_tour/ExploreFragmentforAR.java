@@ -2,11 +2,18 @@ package com.example.ar_tour;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.unity3d.player.UnityPlayerActivity;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ExploreFragmentforAR extends Fragment {
+    protected UnityPlayerActivity mUnityPlayer;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +66,19 @@ public class ExploreFragmentforAR extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_explore_fragmentfor_a_r, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ArrayList<PoiHelper> poiHelpers =QueryUtils.extractpoi();
+        PoiAdapter poiAdapter =new PoiAdapter(getActivity(),poiHelpers);
+        ListView listView =(getView()).findViewById(R.id.poilist);
+        listView.setAdapter(poiAdapter);
+    }
 }
+
+//api key for poi open trip map = 5ae2e3f221c38a28845f05b6783632b01e3f50dbacf1025007a4cb04
