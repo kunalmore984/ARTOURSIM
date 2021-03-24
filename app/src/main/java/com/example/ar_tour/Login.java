@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,7 @@ public class Login extends AppCompatActivity {
     TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    boolean Islogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,16 @@ public class Login extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createText);
         forgotTextLink = findViewById(R.id.forgotPassword);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putBoolean("Islogin", Islogin).apply();
+
+        if(Islogin) {   // condition true means user is already login
+            Intent i = new Intent(this, BottomNavigation.class);
+            startActivityForResult(i, 1);
+        }/*else{
+            // condition false take it user on login form
+        }*/
 
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +80,9 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(Login.this, "Loged in sucessfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),setting.class));
+                            //Toast.makeText(Login.this, "Loged in sucessfully", Toast.LENGTH_SHORT).show();
+                            Intent frag =new Intent(Login.this,BottomNavigation.class);
+                            startActivity(frag);
                         }
                         else{
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

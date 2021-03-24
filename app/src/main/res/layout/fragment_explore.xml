@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".explore">
-
+<!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,8 +37,27 @@
                 android:id="@+id/explore"
                 android:layout_marginStart="10dp" />
 
-        </LinearLayout>
+        </LinearLayout>-->
+
+    <FrameLayout
+        android:id="@+id/explore_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/explore_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/explore_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
+        </androidx.viewpager.widget.ViewPager>
+
+    </FrameLayout>
 
 </LinearLayout>
