@@ -2,11 +2,19 @@ package com.example.ar_tour;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +23,12 @@ import android.view.ViewGroup;
  */
 public class FlightFragment extends Fragment {
 
+    private EditText mDepature;
+    private EditText mArrival;
+    private Button mGo;
+    String dep = "no input";
+    String arr = "no input";
+    String Time = "08/08/1999";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -53,6 +67,30 @@ public class FlightFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //ArrayList<PoiHelper> poiHelpers =QueryUtils.extractpoi();
+        /*ArrayList<PoiHelper> poiHelpers =new ArrayList<PoiHelper>();
+        mDepature =(view).findViewById(R.id.depaturecity);
+        mArrival =(view).findViewById(R.id.arrivalcity);
+        mGo =(view).findViewById(R.id.gobtn);
+
+        mGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dep = mDepature.getText().toString();
+                Log.d("DEPATURE",dep);
+                arr = mArrival.getText().toString();
+                Log.d("Arrival",arr);
+            }
+        });
+        poiHelpers.add(new PoiHelper(dep, arr,Time));
+        PoiAdapter poiAdapter =new PoiAdapter(getActivity(),poiHelpers);
+        ListView listView =(getView()).findViewById(R.id.flightlist);
+        listView.setAdapter(poiAdapter);*/
     }
 
     @Override
