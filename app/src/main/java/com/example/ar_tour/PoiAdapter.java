@@ -24,11 +24,23 @@ public class PoiAdapter extends ArrayAdapter<PoiHelper> {
         //to check that existing view is reused ,if not not then inflate the view
         View listview =convertView;
         if (listview == null){
-            listview = LayoutInflater.from(getContext()).inflate(R.layout.poilist,parent,false);
+            //listview = LayoutInflater.from(getContext()).inflate(R.layout.single_item_train,parent,false);
         }
         PoiHelper poiHelper =getItem(position);
-        TextView Placeview = listview.findViewById(R.id.poiplace);
-        Placeview.setText(poiHelper.getPlace());
+        TextView trainno =(TextView) listview.findViewById(R.id.train_No_);
+        assert poiHelper != null;
+        trainno.setText(poiHelper.getmTrainNo());
+
+        TextView tfrom =(TextView) listview.findViewById(R.id.train_from_);
+        tfrom.setText(poiHelper.getmFrom());
+
+        TextView tto =(TextView) listview.findViewById(R.id.train_to_);
+        tto.setText(poiHelper.getmTo());
+
+        TextView ttime =(TextView) listview.findViewById(R.id.train_time_);
+        ttime.setText(poiHelper.getmTime());
+
+
         return listview;
     }
 }
