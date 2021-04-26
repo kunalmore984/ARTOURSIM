@@ -1,11 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ar_tour.ExploreActivity">
+    tools:context="com.example.ar_tour.FlightsActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/InfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/depaturename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint=" enter depature city"/>
+        <EditText
+            android:id="@+id/arrivalcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint=" enter arrival city"/>
+        <Button
+            android:id="@+id/gobtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="go"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/Flightslist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
