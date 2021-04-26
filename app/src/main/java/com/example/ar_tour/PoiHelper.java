@@ -3,14 +3,32 @@ package com.example.ar_tour;
 import java.util.ArrayList;
 
 public class PoiHelper{
-    public String mPoiplace;
+    public String mTrainNo;
+    public String mFrom;
+    public String mTo;
+    public String mTime;
 
-    public PoiHelper(String poiplace){
-        mPoiplace =poiplace;
+    public PoiHelper(String trainno, String from,String to,String time){
+        mTrainNo =trainno;
+        mFrom = from;
+        mTo = to;
+        mTime = time;
 
     }
 
-    public String getPlace(){
-        return mPoiplace;
+    public String getmFrom() {
+        return mFrom;
+    }
+
+    public String getmTime() {
+        return mTime;
+    }
+
+    public String getmTo() {
+        return mTo;
+    }
+
+    public String getmTrainNo() {
+        return mTrainNo;
     }
 }

@@ -1,8 +1,10 @@
 /*include ':app:mylibrary'
 include ':arnav'
 include ':arnavigation'*/
+//include ':hotels'
+/*include ':hotels'*/
 include ':Arnavigationapp'
 include ':app'
 rootProject.name = "AR_TOUR"
 include ':unityLibrary'
-project(':unityLibrary').projectDir=new File('F:\\MainVuforia\\Android Libs\\unityLibrary')
+project(':unityLibrary').projectDir=new File('F:\\MainVuforia\\Android Library\\unityLibrary')

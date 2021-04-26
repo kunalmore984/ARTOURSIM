@@ -34,24 +34,27 @@ public class QueryUtils  {
 
 
 
-    public static ArrayList<PoiHelper> extractpoi(){
-        ArrayList<PoiHelper> poilist =new ArrayList<>();
+    public static ArrayList<String> extractpoi(){
+        ArrayList<String> stn_code =new ArrayList<>();
         HttpHandler sh = new HttpHandler();
+        String txt = null;
         // Making a request to url and getting response
-        String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?types=poi&access_token=pk.eyJ1Ijoia3VuYWxtb3JlIiwiYSI6ImNraWp5cXQ3NzA0c2UzMnFqcXoxNGhsYWUifQ.5Ol_J9Auu6VEtR15LRsfqg";
+        //String url = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?types=poi&access_token=pk.eyJ1Ijoia3VuYWxtb3JlIiwiYSI6ImNraWp5cXQ3NzA0c2UzMnFqcXoxNGhsYWUifQ.5Ol_J9Auu6VEtR15LRsfqg";
+        String url = "https://indianrailapi.com/api/v2/StationCodeOrName/apikey/adc419db2dec7f9afc3465e871b5278e/SearchText/Mumbai";
         String jsonStr = sh.makeServiceCall(url);
         Log.e(TAG, "Response from url: " + jsonStr);
         if ( jsonStr !=null){
             try {
                 //TODO:Parsing the JSON data....
                 // build up a list of Earthquake objects with the corresponding data.
-                JSONObject quakeroot =new JSONObject(jsonStr);
-                JSONArray featuresarray =quakeroot.optJSONArray("features");
-                //parsing the features array....
-                for (int i=0;i<featuresarray.length();i++){
-                    JSONObject features = featuresarray.optJSONObject(i);
-                    String place = features.optString("place");
-                    poilist.add(new PoiHelper(place));
+                JSONObject stnroot =new JSONObject(jsonStr);
+                JSONArray stationarr =stnroot.getJSONArray("Station");
+                //parsing the array......
+                for (int i=0;i<stationarr.length();i++){
+                    JSONObject stationobj = stationarr.getJSONObject(i);
+                    String Stncode = stationobj.getString("StationCode");
+                    Log.e("code : ",Stncode);
+                    stn_code.add(Stncode);
                 }
             }
             catch (JSONException e){
@@ -60,7 +63,7 @@ public class QueryUtils  {
         }
         //Try and catch for querry.....
 
-        return poilist;
+        return stn_code;
     }
 }
 //poi url = https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?types=poi&access_token=pk.eyJ1Ijoia3VuYWxtb3JlIiwiYSI6ImNraWp5cXQ3NzA0c2UzMnFqcXoxNGhsYWUifQ.5Ol_J9Auu6VEtR15LRsfqg

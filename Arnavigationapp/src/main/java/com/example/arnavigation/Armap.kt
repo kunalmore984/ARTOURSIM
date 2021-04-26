@@ -2,12 +2,14 @@ package com.example.arnavigation
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.mapbox.android.core.location.LocationEngineCallback
 import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.android.core.location.LocationEngineRequest
@@ -141,6 +143,7 @@ class Armap : AppCompatActivity(), MapboxMap.OnMapClickListener, OnMapReadyCallb
         mapView.onSaveInstanceState(outState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.ECLAIR)
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(0, 0)

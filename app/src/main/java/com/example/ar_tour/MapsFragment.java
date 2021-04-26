@@ -1,22 +1,10 @@
 package com.example.ar_tour;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.location.Location;
 import android.os.Bundle;
-import static com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLngBounds;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.within;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillColor;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillOpacity;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,28 +12,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.example.arnavigation.Armap;
 import com.google.gson.JsonObject;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
-import com.mapbox.api.directions.v5.models.LegStep;
-import com.mapbox.api.directions.v5.models.RouteLeg;
-import com.mapbox.api.geocoding.v5.GeocodingCriteria;
-import com.mapbox.api.geocoding.v5.MapboxGeocoding;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
-import com.mapbox.api.geocoding.v5.models.GeocodingResponse;
-import com.mapbox.core.constants.Constants;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
 import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.geojson.Polygon;
-import com.mapbox.geojson.utils.PolylineUtils;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
-import com.mapbox.mapboxsdk.camera.CameraUpdate;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
@@ -72,29 +56,7 @@ import com.mapbox.services.android.navigation.v5.route.RouteFetcher;
 import com.mapbox.services.android.navigation.v5.routeprogress.RouteProgress;
 import com.mapbox.turf.TurfMeta;
 import com.mapbox.turf.TurfTransformation;
-import com.mapbox.vision.VisionManager;
-import com.mapbox.vision.ar.VisionArManager;
-import com.mapbox.vision.ar.core.models.ManeuverType;
-import com.mapbox.vision.ar.core.models.Route;
-import com.mapbox.vision.ar.core.models.RoutePoint;
-import com.mapbox.vision.ar.view.gl.VisionArView;
-import com.mapbox.vision.mobile.core.interfaces.VisionEventsListener;
-import com.mapbox.vision.mobile.core.models.AuthorizationStatus;
-import com.mapbox.vision.mobile.core.models.Camera;
-import com.mapbox.vision.mobile.core.models.Country;
-import com.mapbox.vision.mobile.core.models.FrameSegmentation;
-import com.mapbox.vision.mobile.core.models.classification.FrameSignClassifications;
-import com.mapbox.vision.mobile.core.models.detection.FrameDetections;
-import com.mapbox.vision.mobile.core.models.position.GeoCoordinate;
-import com.mapbox.vision.mobile.core.models.position.VehicleState;
-import com.mapbox.vision.mobile.core.models.road.RoadDescription;
-import com.mapbox.vision.mobile.core.models.world.WorldDescription;
-import com.mapbox.vision.performance.ModelPerformance;
-import com.mapbox.vision.performance.ModelPerformanceMode;
-import com.mapbox.vision.performance.ModelPerformanceRate;
 import com.unity3d.player.UnityPlayerActivity;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,11 +65,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.mapbox.mapboxsdk.location.modes.CameraMode.NONE;
+import static com.mapbox.mapboxsdk.camera.CameraUpdateFactory.newLatLngBounds;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.within;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillColor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
-import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static com.mapbox.turf.TurfConstants.UNIT_KILOMETERS;
 
 /**
@@ -199,7 +164,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         this.mapboxmap = mapboxMap;
-        mapboxmap.setStyle(new Style.Builder().fromUri(Style.SATELLITE_STREETS)
+        mapboxmap.setStyle(new Style.Builder().fromUri(Style.DARK)
                 .withSource(new GeoJsonSource(TURF_CALCULATION_FILL_LAYER_GEOJSON_SOURCE_ID)), new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull Style style) {
@@ -609,235 +574,5 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
         mapView.onLowMemory();
     }
 
-    /*//Vision Sdk.....
-    protected void setArRenderOptions(@NotNull final VisionArView visionArView) {
-        visionArView.setFenceVisible(true);
-    }
-
-    private void startVisionManager() {
-        if (!visionManagerWasInit) {
-            // Create and start VisionManager.
-            VisionManager.create();
-            VisionManager.setModelPerformance(new ModelPerformance.On(ModelPerformanceMode.DYNAMIC, ModelPerformanceRate.LOW.INSTANCE));
-            VisionManager.start();
-            VisionManager.setVisionEventsListener(new VisionEventsListener() {
-                @Override
-                public void onAuthorizationStatusUpdated(@NotNull AuthorizationStatus authorizationStatus) {
-                }
-
-                @Override
-                public void onFrameSegmentationUpdated(@NotNull FrameSegmentation frameSegmentation) {
-                }
-
-                @Override
-                public void onFrameDetectionsUpdated(@NotNull FrameDetections frameDetections) {
-                }
-
-                @Override
-                public void onFrameSignClassificationsUpdated(@NotNull FrameSignClassifications frameSignClassifications) {
-                }
-
-                @Override
-                public void onRoadDescriptionUpdated(@NotNull RoadDescription roadDescription) {
-                }
-
-                @Override
-                public void onWorldDescriptionUpdated(@NotNull WorldDescription worldDescription) {
-                }
-
-                @Override
-                public void onVehicleStateUpdated(@NotNull VehicleState vehicleState) {
-                }
-
-                @Override
-                public void onCameraUpdated(@NotNull Camera camera) {
-                }
-
-                @Override
-                public void onCountryUpdated(@NotNull Country country) {
-                }
-
-                @Override
-                public void onUpdateCompleted() {
-                }
-            });
-
-            VisionArView visionArView = (getView()).findViewById(R.id.mapbox_ar_view1);
-
-            // Create VisionArManager.
-            VisionArManager.create(VisionManager.INSTANCE);
-            visionArView.setArManager(VisionArManager.INSTANCE);
-            setArRenderOptions(visionArView);
-
-            visionManagerWasInit = true;
-        }
-    }
-
-    private void stopVisionManager() {
-        if (visionManagerWasInit) {
-            VisionArManager.destroy();
-            VisionManager.stop();
-            VisionManager.destroy();
-
-            visionManagerWasInit = false;
-        }
-    }
-
-    private void initDirectionsRoute() {
-        // Get route from predefined points.
-        NavigationRoute.builder(getContext())
-                .accessToken(getString(R.string.mapbox_access_token))
-                .origin(originPoint)
-                .destination(destinationPoint)
-                .build()
-                .getRoute(new Callback<DirectionsResponse>() {
-                    @Override
-                    public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
-                        if (response.body() == null || response.body().routes().isEmpty()) {
-                            return;
-                        }
-
-                        // Start navigation session with retrieved route.
-                        DirectionsRoute route = response.body().routes().get(0);
-                        mapboxNavigation.startNavigation(route);
-
-                        // Set route progress.
-                        VisionArManager.setRoute(new Route(
-                                getRoutePoints(route),
-                                route.duration().floatValue(),
-                                "",
-                                ""
-                        ));
-                    }
-
-                    @Override
-                    public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-                    }
-                });
-    }
-
-
-    public void onErrorReceived(Throwable throwable) {
-        if (throwable != null) {
-            throwable.printStackTrace();
-        }
-
-        mapboxNavigation.stopNavigation();
-        Toast.makeText(getContext(), "Can not calculate the route requested", Toast.LENGTH_SHORT).show();
-    }
-
-
-    public void onResponseReceived(@NotNull DirectionsResponse response, RouteProgress routeProgress) {
-        mapboxNavigation.stopNavigation();
-        if (response.routes().isEmpty()) {
-            Toast.makeText(getContext(), "Can not calculate the route requested", Toast.LENGTH_SHORT).show();
-        } else {
-            DirectionsRoute route = response.routes().get(0);
-
-            mapboxNavigation.startNavigation(route);
-
-            // Set route progress.
-            VisionArManager.setRoute(new Route(
-                    getRoutePoints(route),
-                    (float) routeProgress.durationRemaining(),
-                    "",
-                    ""
-            ));
-        }
-    }
-
-    private RoutePoint[] getRoutePoints(@NotNull DirectionsRoute route) {
-        ArrayList<RoutePoint> routePoints = new ArrayList<>();
-
-        List<RouteLeg> legs = route.legs();
-        if (legs != null) {
-            for (RouteLeg leg : legs) {
-
-                List<LegStep> steps = leg.steps();
-                if (steps != null) {
-                    for (LegStep step : steps) {
-                        RoutePoint point = new RoutePoint((new GeoCoordinate(
-                                step.maneuver().location().latitude(),
-                                step.maneuver().location().longitude()
-                        )), mapToManeuverType(step.maneuver().type()));
-
-                        routePoints.add(point);
-
-                        List<Point> geometryPoints = buildStepPointsFromGeometry(step.geometry());
-                        for (Point geometryPoint : geometryPoints) {
-                            point = new RoutePoint((new GeoCoordinate(
-                                    geometryPoint.latitude(),
-                                    geometryPoint.longitude()
-                            )), ManeuverType.None);
-
-                            routePoints.add(point);
-                        }
-                    }
-                }
-            }
-        }
-
-        return routePoints.toArray(new RoutePoint[0]);
-    }
-
-
-    public void onProgressChange(Location location, RouteProgress routeProgress) {
-        lastRouteProgress = routeProgress;
-    }
-
-
-    public void userOffRoute(Location location) {
-        routeFetcher.findRouteFromRouteProgress(location, lastRouteProgress);
-    }
-
-    private List<Point> buildStepPointsFromGeometry(String geometry) {
-        return PolylineUtils.decode(geometry, Constants.PRECISION_6);
-    }
-
-    private ManeuverType mapToManeuverType(@Nullable String maneuver) {
-        if (maneuver == null) {
-            return ManeuverType.None;
-        }
-        switch (maneuver) {
-            case "turn":
-                return ManeuverType.Turn;
-            case "depart":
-                return ManeuverType.Depart;
-            case "arrive":
-                return ManeuverType.Arrive;
-            case "merge":
-                return ManeuverType.Merge;
-            case "on ramp":
-                return ManeuverType.OnRamp;
-            case "off ramp":
-                return ManeuverType.OffRamp;
-            case "fork":
-                return ManeuverType.Fork;
-            case "roundabout":
-                return ManeuverType.Roundabout;
-            case "exit roundabout":
-                return ManeuverType.RoundaboutExit;
-            case "end of road":
-                return ManeuverType.EndOfRoad;
-            case "new name":
-                return ManeuverType.NewName;
-            case "continue":
-                return ManeuverType.Continue;
-            case "rotary":
-                return ManeuverType.Rotary;
-            case "roundabout turn":
-                return ManeuverType.RoundaboutTurn;
-            case "notification":
-                return ManeuverType.Notification;
-            case "exit rotary":
-                return ManeuverType.RotaryExit;
-            default:
-                return ManeuverType.None;
-        }
-    }*/
 }
 
-   /* SymbolLayer poiLabelLayer = style.getLayerAs("poi-label");
-        if (poiLabelLayer != null) {
-                poiLabelLayer.setFilter(within(polygonArea));
-                }*/

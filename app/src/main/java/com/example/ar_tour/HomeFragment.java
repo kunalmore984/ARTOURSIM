@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -144,6 +145,31 @@ public class HomeFragment extends Fragment {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
+            }
+        });
+        TextView trains=(view).findViewById(R.id.trains);
+        trains.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent trainsintent =new Intent(getActivity(),Train.class);
+                startActivity(trainsintent);
+            }
+        });
+        TextView hotes =(view).findViewById(R.id.hotels);
+        hotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent hoteli = new Intent(getActivity(),Hotel.class);
+                startActivity(hoteli);
+            }
+        });
+
+        TextView flights =(view).findViewById(R.id.flights);
+        flights.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent flightintent =new Intent(getActivity(),FlightsActivity.class);
+                startActivity(flightintent);
             }
         });
     }

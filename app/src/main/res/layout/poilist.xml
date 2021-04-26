@@ -2,15 +2,34 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/poiplace"
+        android:id="@+id/depature"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vasai List"
+        android:text="depature List"
         android:textSize="25sp"
         android:layout_gravity="center"
         android:textColor="#000000"
         android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/arrival"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="arrival"
+        android:gravity="center"
+        android:textColor="#000000"
+        />
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#000000"/>
 </LinearLayout>

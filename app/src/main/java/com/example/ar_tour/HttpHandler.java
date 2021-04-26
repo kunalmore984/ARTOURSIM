@@ -19,11 +19,10 @@ public class HttpHandler {
     public HttpHandler() {
     }
 
-    public String makeServiceCall(String requrl){
-
+    public String makeServiceCall(String reqUrl) {
         String response = null;
         try {
-            URL url = new URL(requrl);
+            URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             // read the response

@@ -4,12 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.unity3d.player.UnityPlayerActivity;
 
 public class BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -49,13 +47,13 @@ public class BottomNavigation extends AppCompatActivity implements BottomNavigat
             case R.id.explore:
                 /*Intent UnityActivity =new Intent(BottomNavigation.this, UnityPlayerActivity.class);
                 startActivity(UnityActivity);*/
-                fragment = new explore();
+                fragment = new MapsFragment();
                 break;
 
             case R.id.settings:
                 /*Intent UnityActivity =new Intent(BottomNavigation.this, setting.class);
                 startActivity(UnityActivity);*/
-                fragment = new settings();
+                fragment = new Bookings();
                 break;
 
             case R.id.trips:
