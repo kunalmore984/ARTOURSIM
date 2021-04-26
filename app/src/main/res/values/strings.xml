@@ -50,6 +50,8 @@
     <string name="ar_navigation">ar navigation</string>
     <string name="vision_not_supported_message" />
     <string name="vision_not_supported_title">error</string>
+    <string name="camera_calibration_progress">Camera calibration: %1$d %%</string>
+    <string name="enter_station">ENTER STATION</string>
 
 
 </resources>
