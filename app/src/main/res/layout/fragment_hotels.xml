@@ -6,58 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".explore">
-<!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            >
-            
+    tools:context=".Hotels">
 
-            <Button
-                android:id="@+id/maps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="@dimen/report_feedback_padding_16"
-                android:layout_marginLeft="@dimen/report_feedback_padding_16"
-                android:paddingStart="@dimen/report_feedback_padding_16"
-                android:paddingLeft="@dimen/report_feedback_padding_16"
-                android:text="@string/maps" />
-
-            <Button
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end
-"
-                android:text="@string/explore"
-                android:id="@+id/explore"
-                android:layout_marginStart="10dp" />
-
-        </LinearLayout>-->
-
-    <FrameLayout
-        android:id="@+id/explore_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/explore_tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/explore_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-        </androidx.viewpager.widget.ViewPager>
-
-    </FrameLayout>
 
 </LinearLayout>
