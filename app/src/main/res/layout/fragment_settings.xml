@@ -5,23 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img1"
-    tools:context=".setting">
-
+    android:background="@drawable/gradient_back"
+    tools:context=".settings"
+    >
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:onClick="logout"
         android:text="logout"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:background="#654ea3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#fff"
         app:layout_constraintTop_toBottomOf="@+id/changeProfile" />
 
     <ImageView
@@ -47,6 +48,7 @@
         android:text="Your name"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +65,8 @@
         android:layout_marginRight="16dp"
         android:text="Your email address"
         android:textSize="18sp"
+        android:textColor="#fff"
+
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -76,6 +80,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="30dp"
+        android:textColor="#fff"
+
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="Phone number"
@@ -113,6 +119,7 @@
         app:layout_constraintBottom_toTopOf="@+id/profileImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#fff"
         app:layout_constraintTop_toBottomOf="@+id/verifyMsg" />
 
     <Button
@@ -123,8 +130,12 @@
         android:text="Change profile"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:background="#654ea3"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#fff"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

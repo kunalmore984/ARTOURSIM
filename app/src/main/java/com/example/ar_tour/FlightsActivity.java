@@ -1,5 +1,6 @@
 package com.example.ar_tour;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
@@ -40,6 +41,8 @@ public class FlightsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setTitle("FLIGHTS");
         EditText arrivaltxt = findViewById(R.id.arrivalcity);
         EditText depcity = findViewById(R.id.depaturename);
         Button subtn = findViewById(R.id.gobtn);
@@ -93,7 +96,7 @@ public class FlightsActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
+                params.put("X-RapidAPI-Key", "*****");   //changed key
                 return params;
             }
         };
@@ -139,7 +142,7 @@ public class FlightsActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
+                params.put("X-RapidAPI-Key", "*****");   //changed key
                 return params;
             }
         };
@@ -212,7 +215,7 @@ public class FlightsActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
+                params.put("X-RapidAPI-Key", "*****");   //changed key
                 return params;
             }
         };

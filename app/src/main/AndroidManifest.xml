@@ -30,10 +30,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Hotel">
+        <activity android:name=".Hotel"
+            android:label="Hotel">
 
         </activity>
-        <activity android:name=".Train">
+        <activity android:name=".Train"
+            >
 
         </activity>
         <!--<activity android:name=".Poi">
@@ -53,7 +55,6 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>&ndash;&gt;</activity>
         -->
-        <activity android:name=".setting" /> <!-- <activity android:name=".BaseActivity" /> -->
         <activity android:name=".Login">
 
             <!--
@@ -64,7 +65,8 @@
             </intent-filter>
             -->
         </activity>
-        <activity android:name=".Register">
+        <activity android:name=".Register"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,8 +81,9 @@
 
         </activity>
         -->
-        <activity android:name=".Home" />
-        <activity android:name=".FlightsActivity" />
+
+        <activity android:name=".FlightsActivity"
+            />
         <!--
         <activity
             android:name=".maps"

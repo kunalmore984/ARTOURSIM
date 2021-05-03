@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_back"
     tools:context=".Train">
 
     <EditText
@@ -19,22 +20,33 @@
         android:layout_height="wrap_content"
         android:text="submit"
         android:layout_gravity="center"
-        android:background="@color/purple_500"/>
+        android:textColor="#040303"
+        android:background="#eaafc8"
+        android:elevation="10dp"
+        android:translationZ="5dp"
+        android:layout_marginTop="10dp"
+        android:shadowRadius="2"
+        />
 
     <Spinner
         android:id="@+id/Place_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:id="@+id/listfrag"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <ListView
             android:id="@+id/listtrain"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="15.0sp"/>
 
     </LinearLayout>
 

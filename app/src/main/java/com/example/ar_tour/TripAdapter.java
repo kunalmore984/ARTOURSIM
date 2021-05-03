@@ -50,26 +50,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         return mTripsHelpers.size();
     }
 
-    /*    public TripAdapter(Activity context, ArrayList<TripsHelper> list) {
-
-            super(context,0,list);
-            // List with String type
-        }
-
-        //
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            //to check whether existing layout is used or not.....
-            View listitem = convertView;
-            if (listitem == null){
-                listitem = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_trip,parent,false);
-            }
-            TripsHelper positionadapter = getItem(position);
-            TextView textview =(TextView) listitem.findViewById(R.id.textviewoffer);
-            textview.setText(positionadapter.getTripsOffer());
-            return listitem;
-        }*/
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView mtextview;
 

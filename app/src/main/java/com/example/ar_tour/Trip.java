@@ -105,11 +105,9 @@ public class Trip extends Fragment {
         //recyclerview intialization......
         RecyclerView rvTrips =(getActivity()).findViewById(R.id.tripsrecycler);
 
-        //Log.v(TAG, "initDirectionsRoute: destination "+ROUTE_DESTINATION+"origin : "+ROUTE_ORIGIN);
         TripAdapter adapter =new TripAdapter(Trips);
         rvTrips.setAdapter(adapter);
         rvTrips.setLayoutManager(new LinearLayoutManager(getContext()));
-        /*ListView listView =(getActivity()).findViewById(R.id.list);
-        listView.setAdapter(adapter);*/
+
     }
 }

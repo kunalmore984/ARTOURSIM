@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_back"
     tools:context=".MapsFragment">
 
     <com.mapbox.mapboxsdk.maps.MapView
@@ -24,8 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="10dp"
-        android:tint="@android:color/white"
-        mapbox:backgroundTint="@color/colorPrimary"
+        android:background="#654ea3"
         mapbox:srcCompat="@android:drawable/ic_search_category_default" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start|left"
             android:layout_marginBottom="12dp"
-            android:background="@color/colorPrimary"
+            android:background="#654ea3"
             android:enabled="false"
             android:text="@string/start_navigation"
             android:textColor="@color/design_default_color_background"
@@ -54,6 +54,8 @@
             android:layout_marginStart="@dimen/report_feedback_padding_16"
             android:paddingStart="@dimen/report_feedback_padding_16"
             android:text="@string/ar_mode"
+            android:background="#654ea3"
+            android:textColor="#fff"
             tools:ignore="RtlSymmetry" />
 
         <Button
@@ -62,12 +64,9 @@
             android:layout_gravity="end"
             android:text="@string/explore"
             android:id="@+id/explore"
+            android:background="#654ea3"
+            android:textColor="#fff"
             android:layout_marginStart="10dp" />
-        <Button
-            android:id="@+id/startAr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="start"/>
 
     </LinearLayout>
 
