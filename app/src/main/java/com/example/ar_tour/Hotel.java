@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -39,7 +40,8 @@ public class Hotel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
         edloc=(EditText) findViewById(R.id.searchloc);
-
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setTitle("HOTELS");
         Button submit =(Button) findViewById(R.id.subitbtn);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +98,7 @@ public class Hotel extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "hotels4.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
+                params.put("X-RapidAPI-Key", "*****");   //changed key
                 return params;
             }
         };
@@ -161,21 +163,10 @@ public class Hotel extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "hotels4.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
+                params.put("X-RapidAPI-Key", "*****");   //changed key
                 return params;
             }
         };
         requestQueue.add(stringRequest);
     }
 }
-  /* String response = apicall("https://hotels4.p.rapidapi.com/locations/search?query=new%20york&locale=en_US");
-        Log.e(TAG, "Response from url: " + response);
-        try {
-            JSONObject root =new JSONObject(response);
-            //TODO: Parse JSON array......
-            String term = root.getString("term");
-            test =(TextView) findViewById(R.id.testtext);
-            test.setText(term);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/

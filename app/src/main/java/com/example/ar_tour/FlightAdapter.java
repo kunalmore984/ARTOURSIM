@@ -31,6 +31,7 @@ public class FlightAdapter extends ArrayAdapter<FlightHelper> {
         TextView toflight =(TextView)listview.findViewById(R.id.toflight);
         TextView pricetag =(TextView)listview.findViewById(R.id.pricetag);
 
+        assert flightHelper != null;
         airname.setText(flightHelper.getmAname());
         fromflight.setText(flightHelper.getmFrom());
         toflight.setText(flightHelper.getmTo());

@@ -9,14 +9,10 @@ public class FlightHelper {
     private String mTo;
     private String mPrice;
     public FlightHelper(String name ,List<String> fromto,String price){
-        mAname = "AirLine Name : "+ name;
-        mFrom ="From : "+ fromto.get(0);
-        mTo ="To : "+fromto.get(1);
-        mPrice ="Price : $"+ price;
-    }
-
-    public FlightHelper(String name){
-
+        mAname = "Airlines: "+ name;
+        mFrom ="From: "+ fromto.get(0);
+        mTo ="To: "+fromto.get(1);
+        mPrice ="Price: $"+ price;
     }
 
     public String getmTo() {

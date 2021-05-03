@@ -1,70 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    card_view:contentPadding="7dp"
+    card_view:cardCornerRadius="27dp"
+    card_view:cardBackgroundColor="#FF9800"
+    card_view:cardElevation="7dp"
+    android:elevation="2dp"
+    android:translationZ="4dp">
 
 
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:id="@+id/namelayout">
+        android:id="@+id/namelayout"
+        android:orientation="vertical">
 
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/train_No."
             android:text="Train No: 12345"
-            android:textColor="@color/purple_500"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/train_from."
-            android:text="from: mumbai"
-            android:textColor="@color/purple_500"
             android:textSize="20sp"
-            android:paddingLeft="20dp"/>
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textColor="#FFFFFF"/>
 
-        <TextView
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/train_to."
-            android:text="to: Delhi"
-            android:textColor="@color/purple_500"
-            android:textSize="20sp"
-            android:paddingLeft="20dp"/>
+            android:layout_width="match_parent"
+            android:id="@+id/timelayout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_from."
+                android:text="from: mumbai"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_to."
+                android:text="to: Delhi"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_time."
+                android:text="time: 7:00:00"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_depature."
+                android:text="time: 7:00:00"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/timelayout"
-        android:gravity="center">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/train_time."
-            android:text="time: 7:00:00"
-            android:textColor="@color/purple_500"
-            android:textSize="20sp"
-            android:paddingLeft="20dp"/>
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/train_depature."
-            android:text="time: 7:00:00"
-            android:textColor="@color/purple_500"
-            android:textSize="20sp"
-            android:paddingLeft="20dp"/>
+</androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+<!--
+<TextView
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:id="@+id/train_No."
+android:text="Train No: 12345"
+android:textColor="#FFFFFF"
+android:textSize="20sp"/>
 
-</LinearLayout>
+<TextView
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:id="@+id/train_from."
+android:text="from: mumbai"
+android:textColor="#FFFFFF"
+android:textSize="20sp"
+android:paddingLeft="20dp"/>
+
+<TextView
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:id="@+id/train_to."
+android:text="to: Delhi"
+android:textColor="#FFFFFF"
+android:textSize="20sp"
+android:paddingLeft="20dp"/>
+-->
+    <!-- <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_time."
+                android:text="time: 7:00:00"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:paddingLeft="20dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/train_depature."
+                android:text="time: 7:00:00"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:paddingLeft="20dp"/>-->
