@@ -164,7 +164,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         this.mapboxmap = mapboxMap;
-        mapboxmap.setStyle(new Style.Builder().fromUri(Style.DARK)
+        mapboxmap.setStyle(new Style.Builder().fromUri(Style.MAPBOX_STREETS)
                 .withSource(new GeoJsonSource(TURF_CALCULATION_FILL_LAYER_GEOJSON_SOURCE_ID)), new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull Style style) {
@@ -189,7 +189,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
                 startbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        boolean simulateroute = false;
+                        boolean simulateroute = true;
                         NavigationLauncherOptions Options = NavigationLauncherOptions.builder().directionsRoute(directionsRoute)
                                 .shouldSimulateRoute(simulateroute).build();
                         NavigationLauncher.startNavigation(getActivity(), Options);
@@ -313,7 +313,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
         //poi layer code.....
         mapboxmap.easeCamera(CameraUpdateFactory.newLatLng(point));
         //lastClickPoint = Point.fromLngLat(point.getLongitude(),point.getLatitude());
-        lastClickPoint = originPoint;
+        lastClickPoint = destinationPoint;
+        //initPolygonCircleFillLayer();
         drawPolygonCircle(lastClickPoint);
 
         getRoute(originPoint, destinationPoint);

@@ -23,25 +23,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Bookings#newInstance} factory method to
+ * Use the {@link settings#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Bookings extends Fragment {
+public class settings extends Fragment {
 
     TextView fullName,email,phone,verifyMsg;
     FirebaseAuth fAuth;
@@ -66,7 +61,7 @@ public class Bookings extends Fragment {
 
 
 
-    public Bookings() {
+    public settings() {
         // Required empty public constructor
     }
 
@@ -79,8 +74,8 @@ public class Bookings extends Fragment {
      * @return A new instance of fragment settings.
      */
     // TODO: Rename and change types and number of parameters
-    public static Bookings newInstance(String param1, String param2) {
-        Bookings fragment = new Bookings();
+    public static settings newInstance(String param1, String param2) {
+        settings fragment = new settings();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -175,9 +170,9 @@ public class Bookings extends Fragment {
         documentReference.addSnapshotListener((documentSnapshot, e) -> {
             assert documentSnapshot != null;
             if(documentSnapshot.exists()){
-                phone.setText(documentSnapshot.getString("phone"));
-                fullName.setText(documentSnapshot.getString("fname"));
-                email.setText(documentSnapshot.getString("email"));
+                phone.setText("Phone : "+documentSnapshot.getString("phone"));
+                fullName.setText("Name : "+documentSnapshot.getString("fname"));
+                email.setText("E-Mail : "+documentSnapshot.getString("email"));
 
             }
         });
@@ -188,7 +183,7 @@ public class Bookings extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookings, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
     @Override

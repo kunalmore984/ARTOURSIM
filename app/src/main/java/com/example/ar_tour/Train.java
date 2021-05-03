@@ -1,5 +1,6 @@
 package com.example.ar_tour;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -31,8 +32,6 @@ public class Train extends AppCompatActivity implements AdapterView.OnItemSelect
 
     //Variables....
     private String TAG = Train.class.getSimpleName();
-    public static String API_KEY="f5876c05a73bc01d40367ddf88c99f71";
-    public static String API_KEY_PRIVATE="eafe09170546c0c8984a74f16001d4d7";
     private String stntext;
     List<String> trainHelperList =new ArrayList<>();
     ArrayList<TrainHelper> trainList =new ArrayList<>();
@@ -48,6 +47,8 @@ public class Train extends AppCompatActivity implements AdapterView.OnItemSelect
         if (trainHelperList.size()!=0){
             trainHelperList.clear();
         }
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setTitle("TRAIN");
         arrayAdapter =new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,trainHelperList);
         spinner.setAdapter(arrayAdapter);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -81,7 +82,7 @@ public class Train extends AppCompatActivity implements AdapterView.OnItemSelect
     private void tcode(String t){
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "https://indianrailapi.com/api/v2/StationCodeOrName/apikey/f5876c05a73bc01d40367ddf88c99f71/SearchText/"+t+"/";
+        String url = "https://indianrailapi.com/api/v2/StationCodeOrName/apikey/****/SearchText/"+t+"/";
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -126,7 +127,7 @@ public class Train extends AppCompatActivity implements AdapterView.OnItemSelect
     private void TrainOnStation(String code){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Log.e(TAG, "TrainOnStation: "+code);
-        String url ="https://indianrailapi.com/api/v2/AllTrainOnStation/apikey/2520bbf3a5e4858a253aa39f19c02bae/StationCode/"+code+"/";
+        String url ="https://indianrailapi.com/api/v2/AllTrainOnStation/apikey/****/StationCode/"+code+"/";
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

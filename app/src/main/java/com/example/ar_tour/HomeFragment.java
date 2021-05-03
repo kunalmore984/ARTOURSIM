@@ -1,5 +1,6 @@
 package com.example.ar_tour;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,13 +15,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
@@ -85,17 +83,17 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
+        super.onViewCreated(view, savedInstanceState);
         //settings fragment....
-        ImageButton settings=(view).findViewById(R.id.settings_buttons);
+        /*ImageButton settings=(view).findViewById(R.id.settings_buttons);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent settingsintent =new Intent(getActivity(),setting.class);
+                Intent settingsintent =new Intent(getActivity(),settings.class);
                 startActivity(settingsintent);
             }
-        });
+        });*/
         //tabbed view for trips offer......
         recyclerView = (getActivity()).findViewById(R.id.Recylerview);
 
@@ -178,6 +176,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_home2, container, false);
 
 

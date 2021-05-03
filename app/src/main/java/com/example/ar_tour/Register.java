@@ -1,6 +1,7 @@
 package com.example.ar_tour;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -43,6 +44,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         FirebaseApp.initializeApp(Register.this);
+        ActionBar actionBar =getSupportActionBar();
+        actionBar.setTitle("Register");
         // initialising all views through id defined above
         mFullName   = findViewById(R.id.fullName);
         mEmail      = findViewById(R.id.Email);
