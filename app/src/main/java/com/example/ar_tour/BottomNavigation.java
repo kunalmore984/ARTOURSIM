@@ -28,11 +28,11 @@ public class BottomNavigation extends AppCompatActivity implements BottomNavigat
 
     }
     private boolean loadFragment(Fragment fragment,String title) {
-        //switching fragment
+        //switching fragment....
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
+                    .replace(R.id.fragment_container_main, fragment)
                     .commit();
             getSupportActionBar().setTitle(title);
             return true;

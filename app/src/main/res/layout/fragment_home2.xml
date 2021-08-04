@@ -83,15 +83,22 @@
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Recylerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:orientation="horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
+
+
 
     </LinearLayout>
 </LinearLayout>

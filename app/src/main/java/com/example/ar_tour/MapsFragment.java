@@ -360,18 +360,15 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Permis
     }
 
     private void initSearchFab() {
-        getView().findViewById(R.id.fab_location_search).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new PlaceAutocomplete.IntentBuilder().accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.mapbox_access_token))
-                        .placeOptions(PlaceOptions.builder().backgroundColor(Color.parseColor("#EEEEEE"))
-                                .limit(10)
-                                .addInjectedFeature(home)
-                                .addInjectedFeature(work)
-                                .build(PlaceOptions.MODE_CARDS))
-                        .build(getActivity());
-                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
-            }
+        getView().findViewById(R.id.fab_location_search).setOnClickListener(view -> {
+            Intent intent = new PlaceAutocomplete.IntentBuilder().accessToken(Mapbox.getAccessToken() != null ? Mapbox.getAccessToken() : getString(R.string.mapbox_access_token))
+                    .placeOptions(PlaceOptions.builder().backgroundColor(Color.parseColor("#EEEEEE"))
+                            .limit(10)
+                            .addInjectedFeature(home)
+                            .addInjectedFeature(work)
+                            .build(PlaceOptions.MODE_CARDS))
+                    .build(getActivity());
+            startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
         });
     }
 
