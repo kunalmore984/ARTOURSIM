@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AR Navigation</string>
-    <string name="mapbox_access_token" translatable="true">*****</string>
+    <string name="mapbox_access_token" translatable="true">pk.eyJ1Ijoia3VuYWxtb3JlIiwiYSI6ImNraWp5cXQ3NzA0c2UzMnFqcXoxNGhsYWUifQ.5Ol_J9Auu6VEtR15LRsfqg</string>
     <string name="tap_to_select_destination">Tap to select destination</string>
     <string name="vision_not_supported_message">vision not supported message</string>
     <string name="ar_navigation">Ar_Navigation</string>

@@ -1,62 +1,44 @@
 package com.example.ar_tour;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
-    private List<TripsHelper> mTripsHelpers;
+public class TripAdapter extends ArrayAdapter<TripsHelper> {
 
-    public TripAdapter(List<TripsHelper> tripsHelpers){
-        mTripsHelpers = tripsHelpers;
+
+    public TripAdapter(Context context, List<TripsHelper> tripsHelpers){
+        super(context,0,tripsHelpers);
 
     }
 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater =LayoutInflater.from(context);
-        //inflating custom layout....
-        View TripView = inflater.inflate(R.layout.offerlist,parent,false);
-        ViewHolder viewHolder =new ViewHolder(TripView);
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //getting the position of data in list.....
-        TripsHelper tripsHelper =mTripsHelpers.get(position);
-        //setting items in textview...
-        TextView textView = holder.mtextview;
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View listview = convertView;
+        if (listview == null){
+            listview = LayoutInflater.from(getContext()).inflate(R.layout.offerlist,parent,false);
+        }
+        TripsHelper tripsHelper =getItem(position);
+        TextView textView =(TextView)listview.findViewById(R.id.textviewoffer);
         textView.setText(tripsHelper.getTripsOffer());
 
+        TextView titletext =(TextView)listview.findViewById(R.id.title_place);
+        titletext.setText(tripsHelper.getMtitle());
+
+        ImageView imageView =(ImageView)listview.findViewById(R.id.imagecard);
+        imageView.setImageResource(tripsHelper.getmImage_id());
+        imageView.setVisibility(View.VISIBLE);
+        return listview;
     }
-
-    @Override
-    public int getItemCount() {
-        return mTripsHelpers.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView mtextview;
-
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
-        mtextview =(TextView) itemView.findViewById(R.id.textviewoffer);
-    }
-}
-
 }

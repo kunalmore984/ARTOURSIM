@@ -1,0 +1,1 @@
+package com.example.ar_tour;public class HomeHelper {    private String mData;    private int mId;    public HomeHelper(String data,int image_id){        mData=data;        mId=image_id;    }    public int getmId() {        return mId;    }    public String getmData() {        return mData;    }}

@@ -98,7 +98,7 @@ public class Hotel extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "hotels4.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "*****");   //changed key
+                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
                 return params;
             }
         };
@@ -163,7 +163,7 @@ public class Hotel extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
                 params.put("X-RapidAPI-Host", "hotels4.p.rapidapi.com");
-                params.put("X-RapidAPI-Key", "*****");   //changed key
+                params.put("X-RapidAPI-Key", "c332486ef4msh1b1ff96daa23844p1236b4jsn662354e9312a");   //changed key
                 return params;
             }
         };
