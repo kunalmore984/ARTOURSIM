@@ -2,7 +2,6 @@
 ---
 
 ### **2. ARTOURSIM (Augmented Reality Tourism App) - README.md**  
-Since this project is an **AR-based tourism app**, here’s a README to reflect its functionality:
 
 ```markdown
 # ARTOURSIM - Augmented Reality Tourism App
